@@ -2,11 +2,11 @@
   "name": "axolotl",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "client/index.js",
   "scripts": {
     "build": "webpack",
-    "start": "nodemon server.js",
-    "dev": "webpack serve --open",
+    "start": "NODE_ENV=production node server/server.js",
+    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open",
     "test": "jest --verbose"
   },
   "repository": {

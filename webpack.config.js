@@ -8,7 +8,8 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
   },
   //   mode: "production",
-  mode: "development",
+  //   mode: "development",
+  mode: process.env.NODE_ENV,
   module: {
     rules: [
       {
@@ -29,17 +30,21 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Animal Game Main",
+      template: "./client/index.html",
+    }),
+  ],
   devServer: {
     static: {
       directory: path.join(__dirname, "build"),
     },
     compress: true,
     port: 8080, // DEFAULT PORT is 8080
-    //   hot: true,
-    //   // Stopped @ Build Tools challenge: Proxy in Webpack Dev Server
-    //   proxy: {
-    //     "/api": "http://localhost:3000",
-    //   },
+    hot: true,
+    proxy: {
+      "/": "http://localhost:3000",
+    },
   },
 };
