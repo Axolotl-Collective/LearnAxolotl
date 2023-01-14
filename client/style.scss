@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main-body {
+  min-height: 100vh;
+  background-color: purple;
+}
+
+#root {
+  height: 100vh;
+  background-color: aquamarine;
+}
+
+.navbar {
+  background-color: red;
+  height: 10%;
+}
+
+.home-page {
+  background-color: yellow;
+  height: 100%;
+  width: 100%;
+}
+
+.login {
+  background-color: green;
+  height: 100%;
+  width: 100%;
+}
