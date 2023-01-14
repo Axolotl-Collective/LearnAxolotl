@@ -44,7 +44,8 @@ module.exports = {
     port: 8080, // DEFAULT PORT is 8080
     hot: true,
     proxy: {
-      "/": "http://localhost:3000",
+      "/placeholder": "http://localhost:3000",
+      historyApiFallback: true,
     },
   },
 };
