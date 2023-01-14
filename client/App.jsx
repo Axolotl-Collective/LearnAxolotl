@@ -6,16 +6,16 @@ import Login from "./components/Login.jsx";
 import MainGame from "./components/MainGame.jsx";
 
 const App = () => {
-  return(
+  return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path ='/login' element={<Login />}></Route>
-        <Route path ='/game' element={<MainGame />}></Route>
-        <Route path='/' element={<HomePage />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/game" element={<MainGame />}></Route>
+        <Route path="/" element={<HomePage />}></Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 };
 
 export default App;

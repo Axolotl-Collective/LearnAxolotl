@@ -1,11 +1,11 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const path = require('path');
-const cookieParser = require('cookie-parser');
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+const cookieParser = require("cookie-parser");
 
-mongoose.set('strictQuery', true);
+mongoose.set("strictQuery", true);
 
-require('dotenv').config();
+require("dotenv").config();
 
 const PORT = 3000;
 
@@ -15,17 +15,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(express.static(path.resolve(__dirname, '../client')));
+app.use(express.static(path.resolve(__dirname, "../client")));
 
 //404 handler
-app.use((req, res) => res.status(404).json('Page Not Found'));
+app.use((req, res) => res.status(404).json("Page Not Found"));
 
 //Global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: "Express error handler caught unknown middleware error",
     status: 400,
-    message: { err: 'An error occurred' }
+    message: { err: "An error occurred" },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
 
 mongoose
   .connect(
-    'mongodb+srv://lillian:lillian@soloproject.dbm2wrr.mongodb.net/?retryWrites=true&w=majority'
+    "mongodb+srv://lillian:lillian@soloproject.dbm2wrr.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
     // listen for requests
@@ -44,7 +44,7 @@ mongoose
       console.log(`connected to db and listening on port ${PORT}`);
     });
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 
