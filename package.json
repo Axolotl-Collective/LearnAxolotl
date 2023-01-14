@@ -2,7 +2,7 @@
   "name": "axolotl",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "nodemon server.js",
     "test": "jest --verbose"
