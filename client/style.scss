@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-body {
-  background: lightgreen;
-}
-=======
 * {
   margin: 0;
   padding: 0;
@@ -20,19 +15,70 @@ body {
 }
 
 .navbar {
-  background-color: red;
-  height: 10%;
+  display: grid;
+  grid:
+    "logo nav";
+  grid-template-columns: 1fr 9fr;
+  background-color: hsla(0, 100%, 50%, 0.575);
+  height: 8%;
+
+  #logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  #nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    flex-direction: right;
+    justify-content: right;
+  }
+
+  a {
+    color: black;
+    background-color: pink;
+    padding: 1px 1px;
+    margin: 1px 1px;
+    border: 1px black;
+    text-decoration: none;
+
+    a:link { text-decoration: none; }
+    a:visited { text-decoration: none; }
+    a:hover { text-decoration: none; }
+    a:active { text-decoration: none; }
+
+  }
 }
 
 .home-page {
   background-color: yellow;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .login {
   background-color: green;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
->>>>>>> dev
+
+.game {
+  background-color: orange;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
