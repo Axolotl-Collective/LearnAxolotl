@@ -5,12 +5,13 @@ const Navbar = (props) => {
   return (
     <div className="navbar">
       <div id='logo'>
-        <Link to='/'>Axolotl</Link>
+        <Link to='/'>Logo</Link>
       </div>
       <div id='nav'>
         <Link to='/'>Home</Link>
         <Link to='/game'>Play</Link>
         <Link to='/login'>Login</Link>
+        <Link to='/signup'>Sign Up</Link>
       </div>
     </div>
   )
