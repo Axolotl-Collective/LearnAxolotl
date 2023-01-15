@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import HomePage from "./components/HomePage.jsx";
 import Login from "./components/Login.jsx";
 import MainGame from "./components/MainGame.jsx";
+import Signup from "./components/Signup.jsx";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
         <Route path="/game" element={<MainGame />}></Route>
         <Route path="/" element={<HomePage />}></Route>
       </Routes>
