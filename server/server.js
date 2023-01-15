@@ -1,3 +1,6 @@
+//need to require dotenv at the top to get access to the process.env variables
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -8,9 +11,7 @@ const userRouter = require('./routes/user.js');
 
 mongoose.set('strictQuery', true);
 
-require('dotenv').config();
-
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -20,13 +21,13 @@ app.use(cookieParser());
 
 // app.use(express.static(path.resolve(__dirname, '../client')));
 
+// sending to userRouter
+app.use('/user', userRouter);
+
 // deliver home page
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
 });
-
-// sending to userRouter
-app.use('/user', userRouter);
 
 //404 handler
 app.use((req, res) => res.status(404).json('Page Not Found'));
@@ -45,7 +46,8 @@ app.use((err, req, res, next) => {
 
 mongoose
   .connect(
-    'mongodb+srv://lillian:lillian@soloproject.dbm2wrr.mongodb.net/?retryWrites=true&w=majority'
+    process.env.MONGO_URI ||
+      'mongodb+srv://lillian:lillian@soloproject.dbm2wrr.mongodb.net/?retryWrites=true&w=majority'
   )
   .then(() => {
     console.log('conneted to the database');

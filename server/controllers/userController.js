@@ -29,7 +29,7 @@ userController.createUser = (req, res, next) => {
         log: `userController.createUser: ERROR: ${err}`,
         message: 'Create user failed'
       });
-    res.locals.newUser = newUser;
+    res.locals.user = newUser;
     return next();
   });
 };
@@ -55,7 +55,7 @@ userController.verifyUser = (req, res, next) => {
       });
 
     // check the password
-    const strPassword = password.toString(); // convert the password to string to match the Schema password type
+    const strPassword = password.toString(); // convert the password to string to match the userSchema password type
     if (!bcrypt.compareSync(strPassword, user.password))
       return next({
         log: 'userController.verifyUser: ERROR: password does not match',
