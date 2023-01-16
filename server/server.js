@@ -43,7 +43,8 @@ app.use((req, res) => res.status(404).json('Page Not Found'));
 
 //Global error handler
 app.use((err, req, res, next) => {
-  console.log(err);
+  // UNCOMMENT BELOW TO SEE ERROR WHEN DEBUGGING
+  // console.log(err);
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
