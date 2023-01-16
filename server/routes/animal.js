@@ -4,10 +4,10 @@ const router = express.Router();
 // import controler
 const animalController = require('../controllers/animalController');
 
-router.get('/', animalController.selectAnimal, (req, res) => {
-  console.log('animalRouter!');
-  console.log(res.locals.animal);
-  res.status.apply(200).json(res.locals.animals);
+router.get('/', animalController.getAnimal, (req, res) => {
+  // console.log('animal controller!!');
+  // console.log(res.locals.animal);
+  res.status(200).json(res.locals.animal);
 });
 
 module.exports = router;

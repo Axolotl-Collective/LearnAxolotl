@@ -1,22 +1,26 @@
 const Animal = require('../models/animalModels');
 
-animalController = {
+const animalController = {
 
-  selectAnimal(req, res, next) {
-    console.log('animal Controller!');
-    Animal.findOne({name: "Irrawaddy Dolphin"},
+  getAnimal(req, res, next) {
+    console.log('getAnimal method!!');
+    // const { name } = req.params;
+    // console.log(name);
+    Animal.findOne({name: "African Elephant"},
       (err, animal) => {
-        if (err)
+        if (err) {
+          console.log(err);
           return next({
             log: `animalController.selectAnimal: ERROR: ${err}`,
             message: 'An error occured on the server side'
           });
-        else {
+        } else {
           console.log(animal);
           res.locals.animal = animal;
           return next();
         }
-      })
+      }
+    )
   }
 
 };
