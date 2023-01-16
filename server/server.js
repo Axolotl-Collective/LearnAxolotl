@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 // Routers
 const userRouter = require('./routes/user.js');
+const animalRouter = require('./routes/animal.js');
 
 mongoose.set('strictQuery', true);
 
@@ -27,6 +28,9 @@ app.get('/', (req, res) => {
 
 // sending to userRouter
 app.use('/user', userRouter);
+
+// sending to animalRouter
+app.use('/animal', animalRouter);
 
 //404 handler
 app.use((req, res) => res.status(404).json('Page Not Found'));

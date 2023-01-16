@@ -12,6 +12,7 @@ animalController = {
             message: 'An error occured on the server side'
           });
         else {
+          console.log(animal);
           res.locals.animal = animal;
           return next();
         }
