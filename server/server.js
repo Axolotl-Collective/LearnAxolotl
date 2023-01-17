@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 // Routers
 const userRouter = require('./routes/user.js');
@@ -24,6 +25,15 @@ mongoose
   });
 
 // require('dotenv').config(); // TRYING COMMENTING THIS OUT, MAY NOT NEED ENV FILE
+
+// Override CORS error
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
