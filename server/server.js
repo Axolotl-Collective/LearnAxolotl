@@ -1,9 +1,10 @@
+//need to require dotenv at the top to get access to the process.env variables
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const app = express();
-const PORT = 3000;
 
 // Routers
 const userRouter = require('./routes/user.js');
@@ -11,6 +12,9 @@ const animalRouter = require('./routes/animal.js');
 
 mongoose.set('strictQuery', true);
 
+const PORT = process.env.PORT || 3000;
+
+const app = express();
 mongoose
   .connect(
     'mongodb+srv://lillian:lillian@soloproject.dbm2wrr.mongodb.net/?retryWrites=true&w=majority'
@@ -27,16 +31,17 @@ app.use(cookieParser());
 
 // app.get('/', (req, res) => res.json('Welcome to the app'));
 
-// DELIVER HOMEPAGE TEST
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
-});
-
 // sending to userRouter
 app.use('/user', userRouter);
 
 // sending to animalRouter
 app.use('/animal', animalRouter);
+
+// deliver home page
+// DELIVER HOMEPAGE TEST
+app.get('/', (req, res) => {
+  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
+});
 
 //404 handler
 app.use((req, res) => res.status(404).json('Page Not Found'));
