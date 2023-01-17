@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
 }
 
 #main-body {
@@ -27,7 +29,7 @@
     grid-area: logo;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
   }
 
   #nav {
@@ -36,14 +38,16 @@
     align-items: center;
     flex-direction: right;
     justify-content: right;
+    margin-right: 5rem;
   }
 
   a {
     color: black;
     background-color: pink;
-    padding: 1px 1px;
-    margin: 1px 1px;
+    padding: 5px 15px;
+    margin: 5px 5px;
     border: 1px black;
+    border-radius: 5px;
     text-decoration: none;
 
     a:link { text-decoration: none; }
@@ -86,21 +90,19 @@
 
 .gameContainer {
   background-color: orange;
-  height: 80%;
-  width: 50%;
+  border-radius: 20px;
+  height: auto;
   grid-area: body;
-  display: grid;
-  grid:
-    "pic"
-    "game";
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  
+
   #animal-img {
     grid-area: pic;
     display: flex;
@@ -108,6 +110,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
+    padding: 2rem;
   }
 
   #description-box {
@@ -129,42 +132,45 @@
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
+    margin: 10px 10px;
 
     #letter-container {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      background-color: white;
-      height: 50%;
+      background-color: inherit;
+      height: 30%;
+      min-height: 30%;
       width: 95%;
       flex-wrap: wrap;
-      
+
       #letter-box {
+        font-weight: 800;
         border: 1px solid black;
-        margin: 1px 1px;
+        margin: 1px 2px;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 95%;
-        min-width: 20px;
-        width: 5%;
+        height: 40px;
+        width: 25px;
+        background-color: white;
       }
-      
+
       #letter-box-no-border {
         margin: 1px 1px;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 80%;
-        width: 5%;
+        height: 40px;
+        width: 25px;
       }
     }
 
     #guess {
       display: flex;
       flex-direction: row;
+      margin-top: 1rem;
     }
   }
 }
-
