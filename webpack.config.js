@@ -37,6 +37,7 @@ module.exports = {
     }),
   ],
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, "build"),
     },
@@ -44,8 +45,8 @@ module.exports = {
     port: 8080, // DEFAULT PORT is 8080
     hot: true,
     proxy: {
-      "/placeholder": "http://localhost:3000",
-      historyApiFallback: true,
+      "/animal": "http://localhost:3000",
+      "/user": "http://localhost:3000"
     },
   },
 };

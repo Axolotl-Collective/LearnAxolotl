@@ -21,7 +21,7 @@ const GuessLetters = (props) => {
   })
 
   return(
-    <div>
+    <div id='guess'>
       <input ref={letterInput} type='text' id='input-field' placeholder="Guess a letter"></input>
       <button onClick={checkInput}>Submit</button>
     </div>

@@ -15,6 +15,7 @@
 }
 
 .navbar {
+  grid-area: nav;
   display: grid;
   grid:
     "logo nav";
@@ -83,32 +84,87 @@
   justify-content: center;
 }
 
-.game {
+.gameContainer {
   background-color: orange;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  height: 80%;
+  width: 50%;
+  grid-area: body;
+  display: grid;
+  grid:
+    "pic"
+    "game";
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-
-  #game-letters {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  
+  #animal-img {
+    grid-area: pic;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    height: 40px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
+  }
+
+  #description-box {
+    grid-area: game;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: blanchedalmond;
+  }
+
+  .game {
+    grid-area: game;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+
+    #letter-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      height: 50%;
+      width: 95%;
+      flex-wrap: wrap;
+      
+      #letter-box {
+        border: 1px solid black;
+        margin: 1px 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 95%;
+        min-width: 20px;
+        width: 5%;
+      }
+      
+      #letter-box-no-border {
+        margin: 1px 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80%;
+        width: 5%;
+      }
+    }
+
+    #guess {
+      display: flex;
+      flex-direction: row;
+    }
   }
 }
 
-#letter-box {
-  border: 1px solid black;
-  margin: 1px 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80%;
-  width: 5%;
-}
