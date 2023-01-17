@@ -3,6 +3,7 @@ const router = express.Router();
 
 // import controler
 const animalController = require('../controllers/animalController');
+const sessionController = require('../controllers/sessionController');
 
 router.get('/', animalController.getAnimalCount, animalController.getRandomAnimal, (req, res) => {
   // console.log('animal controller!!');

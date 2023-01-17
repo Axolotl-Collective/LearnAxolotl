@@ -34,6 +34,7 @@ sessionController.isLoggedIn = (req, res, next) => {
         message: { err: 'An error occured on the server side' }
       });
     }
+    res.locals.isAvtive = true;
     return next();
   });
 };
