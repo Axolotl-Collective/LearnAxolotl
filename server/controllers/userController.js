@@ -10,7 +10,7 @@ userController.createUser = (req, res, next) => {
   if (!username || !password)
     return next({
       log: 'userController.createUser: ERROR: missing username or password',
-      message: 'username or password cannot be empty'
+      message: { err: 'username or password cannot be empty' }
     });
 
   // check if the username already exists
@@ -18,7 +18,7 @@ userController.createUser = (req, res, next) => {
     if (data !== null)
       return next({
         log: `userController.createUser: ERROR: username already been taken. User: ${data}`,
-        message: 'username has already been taken. Please choose a diffrent one.'
+        message: { err: 'username has already been taken. Please choose a diffrent one.' }
       });
   });
 
@@ -27,7 +27,7 @@ userController.createUser = (req, res, next) => {
     if (err)
       return next({
         log: `userController.createUser: ERROR: ${err}`,
-        message: 'Create user failed'
+        message: { err: 'Create user failed' }
       });
     res.locals.user = newUser;
     return next();
@@ -41,29 +41,51 @@ userController.verifyUser = (req, res, next) => {
   if (!username || !password)
     return next({
       log: 'userController.verifyUser: ERROR: missing username or password',
-      message: 'username or password cannot be empty'
+      message: { err: 'username or password cannot be empty' }
     });
 
   User.findOne({ username }, (err, user) => {
     // check if the username exist
-    if (!user) return next({ log: 'userController.verifyUser: ERROR: user not found' });
+    if (!user)
+      return next({
+        log: 'userController.verifyUser: ERROR: user not found',
+        message: { err: 'Wrong username or password. Please try again.' }
+      });
 
     if (err)
       return next({
         log: `userController.createUser: ERROR: ${err}`,
-        message: 'An error occured on the server side'
+        message: { err: 'An error occured on the server side' }
       });
 
     // check the password
     const strPassword = password.toString(); // convert the password to string to match the userSchema password type
-    if (!bcrypt.compareSync(strPassword, user.password))
-      return next({
-        log: 'userController.verifyUser: ERROR: password does not match',
-        status: 401,
-        message: 'Wrong username or password'
-      });
-    res.locals.user = user;
-    return next();
+    // if (!bcrypt.compareSync(strPassword, user.password))
+    //   return next({
+    //     log: 'userController.verifyUser: ERROR: password does not match',
+    //     status: 401,
+    //     message: { err: 'Wrong username or password. Please try again.' }
+    //   });
+    // res.locals.user = user;
+    // return next();
+    bcrypt
+      .compare(strPassword, user.password)
+      .then(result => {
+        if (!result)
+          return next({
+            log: 'userController.verifyUser: ERROR: password does not match',
+            status: 401,
+            message: { err: 'Wrong username or password. Please try again.' }
+          });
+        re.locals.user = user;
+        return;
+      })
+      .catch(err =>
+        next({
+          log: `userController.verifyUser: ERROR: ${err}`,
+          message: { err: 'An error occured on the server side' }
+        })
+      );
   });
 };
 
