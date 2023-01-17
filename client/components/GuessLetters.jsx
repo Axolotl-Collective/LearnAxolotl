@@ -15,12 +15,6 @@ const GuessLetters = (props) => {
     return guessLetter(letter)
   }
 
-  const handleKeyDown = event => {
-    if(event.key === 'Enter') {
-      return checkInput();
-    }
-  }
-
   useEffect(() => {
     
     letterInput.current.value = '';
@@ -29,7 +23,7 @@ const GuessLetters = (props) => {
   return(
     <div>
       <input ref={letterInput} type='text' id='input-field' placeholder="Guess a letter"></input>
-      <button onClick={checkInput} onKeyDown={handleKeyDown}>Submit</button>
+      <button onClick={checkInput}>Submit</button>
     </div>
   )
 };
