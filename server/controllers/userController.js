@@ -54,38 +54,38 @@ userController.verifyUser = (req, res, next) => {
 
     if (err)
       return next({
-        log: `userController.createUser: ERROR: ${err}`,
+        log: `userController.verifyUser: ERROR: ${err}`,
         message: { err: 'An error occured on the server side' }
       });
 
     // check the password
     const strPassword = password.toString(); // convert the password to string to match the userSchema password type
-    // if (!bcrypt.compareSync(strPassword, user.password))
-    //   return next({
-    //     log: 'userController.verifyUser: ERROR: password does not match',
-    //     status: 401,
-    //     message: { err: 'Wrong username or password. Please try again.' }
-    //   });
-    // res.locals.user = user;
-    // return next();
-    bcrypt
-      .compare(strPassword, user.password)
-      .then(result => {
-        if (!result)
-          return next({
-            log: 'userController.verifyUser: ERROR: password does not match',
-            status: 401,
-            message: { err: 'Wrong username or password. Please try again.' }
-          });
-        re.locals.user = user;
-        return;
-      })
-      .catch(err =>
-        next({
-          log: `userController.verifyUser: ERROR: ${err}`,
-          message: { err: 'An error occured on the server side' }
-        })
-      );
+    if (!bcrypt.compareSync(strPassword, user.password))
+      return next({
+        log: 'userController.verifyUser: ERROR: password does not match',
+        status: 401,
+        message: { err: 'Wrong username or password. Please try again.' }
+      });
+    res.locals.user = user;
+    return next();
+    // bcrypt
+    //   .compare(strPassword, user.password)
+    //   .then(result => {
+    //     if (!result)
+    //       return next({
+    //         log: 'userController.verifyUser: ERROR: password does not match',
+    //         status: 401,
+    //         message: { err: 'Wrong username or password. Please try again.' }
+    //       });
+    //     re.locals.user = user;
+    //     return;
+    //   })
+    //   .catch(err =>
+    //     next({
+    //       log: `userController.verifyUser: ERROR: ${err}`,
+    //       message: { err: 'An error occured on the server side' }
+    //     })
+    //   );
   });
 };
 
