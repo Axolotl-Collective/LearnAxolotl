@@ -7,7 +7,7 @@ import MainGame from "./components/GameContainer.jsx";
 import Signup from "./components/Signup.jsx";
 
 const App = () => {
-  const [isVerified, setIsVerified] = useState(false);
+  // const [isVerified, setIsVerified] = useState(false);
 
   // useEffect(() => {
   //   fetch('/user').then(res => res.json()).then(data => setIsVerified(data)).catch(err => console.log(err));
