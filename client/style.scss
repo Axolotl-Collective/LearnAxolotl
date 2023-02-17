@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+#main-body {
+  min-height: 100vh;
+  background-color: purple;
+}
+
+#root {
+  height: 100vh;
+  background-color: aquamarine;
+}
+
+.navbar {
+  grid-area: nav;
+  display: grid;
+  grid:
+    "logo nav";
+  grid-template-columns: 1fr 9fr;
+  background-color: hsla(0, 100%, 50%, 0.575);
+  height: 8%;
+
+  #logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    flex-direction: right;
+    justify-content: right;
+    margin-right: 5rem;
+  }
+
+  a {
+    color: black;
+    background-color: pink;
+    padding: 5px 15px;
+    margin: 5px 5px;
+    border: 1px black;
+    border-radius: 5px;
+    text-decoration: none;
+
+    a:link { text-decoration: none; }
+    a:visited { text-decoration: none; }
+    a:hover { text-decoration: none; }
+    a:active { text-decoration: none; }
+
+  }
+}
+
+.home-page {
+  background-color: yellow;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  background-color: green;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup {
+  background-color: turquoise;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gameContainer {
+  background-color: orange;
+  border-radius: 20px;
+  height: auto;
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  #animal-img {
+    grid-area: pic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  #description-box {
+    grid-area: game;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: blanchedalmond;
+  }
+
+  .game {
+    grid-area: game;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 10px 10px;
+
+    #letter-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      background-color: inherit;
+      height: 30%;
+      min-height: 30%;
+      width: 95%;
+      flex-wrap: wrap;
+
+      #letter-box {
+        font-weight: 800;
+        border: 1px solid black;
+        margin: 1px 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 25px;
+        background-color: white;
+      }
+
+      #letter-box-no-border {
+        margin: 1px 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 25px;
+      }
+    }
+
+    #guess {
+      display: flex;
+      flex-direction: row;
+      margin-top: 1rem;
+    }
+  }
+}
